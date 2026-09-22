@@ -4,6 +4,7 @@ import com.example.crud.config.Conexao;
 import com.example.crud.model.Aluno;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,5 +35,24 @@ public class AlunoDao {
        }
        return alunos;
 
+    }
+
+    public void inserir(Aluno aluno){
+        String sql = "INSERT INTO alunos(nome,cpf,email,telefone) VALUES(?,?,?,?)";
+        PreparedStatement ps;
+
+        try{
+            Connection conn = Conexao.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1 , aluno.getNome());
+            ps.setString(2 , aluno.getCpf());
+            ps.setString(3 , aluno.getEmail());
+            ps.setString(4 , aluno.getTelefone());
+            ps.execute();
+            ps.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

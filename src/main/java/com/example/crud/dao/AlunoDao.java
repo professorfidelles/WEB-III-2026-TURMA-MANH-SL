@@ -22,6 +22,7 @@ public class AlunoDao {
 
            while (resultado.next()){
                Aluno aluno = new Aluno();
+               aluno.setId(resultado.getInt("id"));
                aluno.setNome(resultado.getString("nome"));
                aluno.setCpf(resultado.getString("cpf"));
                aluno.setEmail(resultado.getString("email"));
@@ -51,6 +52,25 @@ public class AlunoDao {
             ps.execute();
             ps.close();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void atualizar(Aluno aluno){
+        String sql = "UPDATE alunos SET nome=?,cpf=?,email=?,telefone=? WHERE id=?";
+        PreparedStatement ps;
+
+        try {
+            Connection conn = Conexao.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1 , aluno.getNome());
+            ps.setString(2 , aluno.getCpf());
+            ps.setString(3, aluno.getEmail());
+            ps.setString(4 , aluno.getTelefone());
+            ps.setInt(5 , aluno.getId());
+            ps.execute();
+            ps.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

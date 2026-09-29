@@ -7,6 +7,14 @@ public class Aluno {
     private String email;
     private String telefone;
 
+    public Aluno(int id,String nome, String cpf, String email, String telefone) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+    }
+
     public Aluno(String nome, String cpf, String email, String telefone) {
         this.nome = nome;
         this.cpf = cpf;

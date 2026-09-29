@@ -3,10 +3,7 @@ package com.example.crud.dao;
 import com.example.crud.config.Conexao;
 import com.example.crud.model.Aluno;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +68,20 @@ public class AlunoDao {
             ps.setInt(5 , aluno.getId());
             ps.execute();
             ps.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deletar(int valor){
+        String sql = "DELETE FROM alunos WHERE id="+valor;
+        Statement st;
+
+        try {
+            Connection conn = Conexao.getConnection();
+            st = conn.createStatement();
+            st.execute(sql);
+            st.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

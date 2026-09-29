@@ -37,7 +37,7 @@
                 <td> <%= aluno.getTelefone() %> </td>
                 <td> <%= aluno.getEmail()%> </td>
                 <td> <a href="atualizar.jsp?id=<%=aluno.getId()%>&nome=<%=aluno.getNome()%>&cpf=<%=aluno.getCpf()%>&telefone=<%=aluno.getTelefone()%>&email=<%=aluno.getEmail()%>"> Edit </a> </td>
-                <td> <a href="deletar.jsp"> Delete </a> </td>
+                <td> <a href="deletar.jsp?id=<%=aluno.getId()%>"> Delete </a> </td>
             </tr>
         <% } %>
         </tbody>

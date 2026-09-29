@@ -9,7 +9,7 @@
     <h1> Atualizar Aluno </h1>
     <form action="validator_atualizar.jsp" method="post">
         <label for="id" class="form-label"> Id </label>
-        <input type="text" id="id" name="id" class="form-control" disabled value="<%= request.getParameter("id") %>">
+        <input type="text" id="id" name="id" class="form-control"  value="<%= request.getParameter("id") %>">
         <label for="nome" class="form-label"> Nome </label>
         <input type="text" id="nome" name="nome" class="form-control" value="<%= request.getParameter("nome")%>">
         <label for="cpf" class="form-label"> Cpf </label>

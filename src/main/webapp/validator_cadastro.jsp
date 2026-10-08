@@ -7,6 +7,8 @@
 
     if(nome != null && !nome.trim().isEmpty() && cpf != null && !cpf.trim().isEmpty() && email != null && !email.trim().isEmpty() && telefone != null && !telefone.trim().isEmpty()){
         try{
+
+
             Aluno aluno = new Aluno();
             aluno.setNome(nome);
             aluno.setCpf(cpf);
